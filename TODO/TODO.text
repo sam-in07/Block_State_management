@@ -1,0 +1,34 @@
+1. What is BLOC
+    - Central State Management Library for Flutter
+    - BLOC stands for Business Logic Component
+    - Helps separate business logic from UI code
+    - Clean Architecture principles
+
+2. Add flutter_bloc: ^9.1.1 to pubspec.yaml
+
+3. Architecture principles
+    - Events=> What user does
+    - States=> Which Data UI should show
+    - Bloc => Connecting the  Events With States (Event+States)
+
+
+4. Lets create a Simple Counter App using BLOC
+    - counter_event.dart
+    - counter_state.dart
+    - counter_bloc.dart
+
+
+5. Create UI and complete
+
+
+6. Cubit
+    - counter_cubit.dart
+
+
+7.  BLOC VS Cubit
+    - Comparison Clear
+    - Performance 19,20
+    - অনেক বড় এপ হলে দেখবেন  BLOC-> লেগেছি ডেভেলপার পছন্দ করে ।
+    - অনেক বড় এপ/মিডিয়াম এপ হলে দেখবেন  Cubit
+    - Cubit+Model+Service+Utility+UI
+    - UI=> (Page,Layout,Component,Style)

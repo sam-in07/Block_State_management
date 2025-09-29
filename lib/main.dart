@@ -1,5 +1,6 @@
 import 'package:block_management/bloc/counter/counter_bloc.dart';
 import 'package:block_management/bloc/counter/counter_state.dart';
+import 'package:block_management/bloc/cubit/counter/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/counter/counter_event.dart';
@@ -19,8 +20,16 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         home: MultiBlocProvider(
           providers: [
-            BlocProvider<CounterBlock>
-              (create:(_)=>CounterBlock()),
+            // BlocProvider<CounterBlock>
+            //   (create:(_)=>CounterBlock()),
+
+
+            //cubit dey kemna hobe
+            BlocProvider(create:
+            (_)=>CounterCubit(),)
+
+
+
             //counter vitore joto gula prover  thakbe sob avbe add korte hobe
             // BlocProvider<CounterBlock>
             //   (create:(_)=>CounterBlock()),
@@ -43,7 +52,10 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final counterBloc=context.read<CounterBlock>();
+    // final counterBloc=context.read<CounterBlock>();
+
+    //cubit edit
+    final counterCubit=context.read<CounterCubit>();
 
     return Scaffold(
       appBar: AppBar(title: Text("Flutter Clean Architecture and BLOC"),),
@@ -53,9 +65,12 @@ class MyHomePage extends StatelessWidget {
           children: [
 
 
-            BlocBuilder<CounterBlock,CounterStates>(
-              builder: (context,state){
-                return  Text("Counting Value: ${state.counterValue}",style: TextStyle(fontSize: 50));
+            // BlocBuilder<CounterBlock,CounterStates>(
+
+            //cubit dey
+            BlocBuilder<CounterCubit,int>(
+              builder: (context,count){
+                return  Text("Counting Value: ${count}",style: TextStyle(fontSize: 50));
               },
             ),
 
@@ -63,13 +78,15 @@ class MyHomePage extends StatelessWidget {
             SizedBox(height: 50),
 
             ElevatedButton(onPressed: (){
-              counterBloc.add(Increment());
+              // counterBloc.add(Increment());
+              counterCubit.increment();
             }, child: Text("Increment")),
 
             SizedBox(height: 50),
 
             ElevatedButton(onPressed: (){
-              counterBloc.add(Decrement());
+              // counterBloc.add(Decrement());
+              counterCubit.decrement();
             }, child: Text("Decrement")),
 
             SizedBox(height: 50),
